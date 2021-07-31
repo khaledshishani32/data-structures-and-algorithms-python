@@ -40,9 +40,9 @@ class LinkedList:
         while current_value:
             value = current_value.value
             if current_value.next is None:
-                output += f"( {value} ) -> null"
+                output += f"({value}) -> null"
                 break
-            output = output + f"( {value} ) -> "
+            output = output + f"({value}) -> "
             current_value=current_value.next
         return output
 
