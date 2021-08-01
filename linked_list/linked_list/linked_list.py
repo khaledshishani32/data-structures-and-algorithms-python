@@ -5,6 +5,7 @@ class Node:
     def __init__(self, value):
         self.value = value
         self.next = None
+
 class LinkedList:
     def __init__(self):
         self.head = None
@@ -51,7 +52,7 @@ class LinkedList:
 
 if __name__ == "__main__":
     l1 = LinkedList()
-    l1.insert(12)
+    l1.insert(13)
     l1.insert(22)
     l1.insert(30)
     l1.insert(50)
