@@ -19,7 +19,7 @@ class LinkedList:
             self.head.next = current
             return self.head.value
 
-    def __str__(self):
+    def __repr__(self):
         if self.head == None:
             return 'NULL'
         else :
@@ -31,6 +31,15 @@ class LinkedList:
             values=values +'NULL'
             return f'{values}'
 
+
+    def Inbetween(self,middle_node,newdata):
+      if middle_node is None:
+         print("The mentioned node is absent")
+         return
+
+      NewNode = Node(newdata)
+      NewNode.value = middle_node.value
+      middle_node.value = NewNode
 
 
     def append(self,value):
@@ -48,7 +57,11 @@ class LinkedList:
 
 
 l=LinkedList()
-l.append(2)
-l.append(8)
+l.append(50)
+l.append(40)
+l.append(30)
+l.append(20)
+l.append(10)
 
+l.Inbetween(2, 300)
 print(l)

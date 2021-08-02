@@ -7,6 +7,13 @@ def test_version():
 
 
 
+def test_one():
+    
+    l=LinkedList()
+    l.append(2)
+    actual=l.__repr__()
+    expected='2-> NULL'
+    assert actual==expected
 
 
 def test_multiple():
@@ -14,6 +21,6 @@ def test_multiple():
     l=LinkedList()
     l.append(2)
     l.append(8)
-    actual=l.__str__()
+    actual=l.__repr__()
     expected='2-> 8-> NULL'
     assert actual==expected
