@@ -44,11 +44,31 @@ class LinkedList:
             current.next=Node(value)
             return current.next
 
-    
+    def printNthFromLast(self, n):
+        temp = self.head 
+        n+=1
+        length = 0
+        while temp:
+            temp = temp.next
+            length += 1
+
+        if n > length: 
+            raise Exception("Location is greater than the length of LinkedList")
+            return
+        temp = self.head
+        for i in range(0, length - n):
+            temp = temp.next
+        return temp.value
 
 
-l=LinkedList()
-l.append(2)
+l = LinkedList()
+l.append(1)
+l.append(3)
 l.append(8)
+l.append(2)
+l.printNthFromLast(0)
+### 3 cases work 0 , 2 , grater the length (6)
 
-print(l)
+print(l.printNthFromLast(0))
+print(l.printNthFromLast(2))
+print(l.printNthFromLast(6))
