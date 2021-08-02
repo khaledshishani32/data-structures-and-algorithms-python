@@ -45,7 +45,7 @@ def test_multiple():
     test.insert(2)
     test.insert(8)
     actual=test.__str__()
-    expected='(8) -> (2) -> null'
+    expected='(8) -> (2) -> NULL'
     assert actual==expected
 
 def test_return_true():
@@ -75,6 +75,14 @@ def test_all_collection():
     test.insert("waleed")
     test.insert("khaled")
     actual=test.__str__()
-    expected='(khaled) -> (waleed) -> (abu baker) -> (shishani) -> null'
+    expected='(khaled) -> (waleed) -> (abu baker) -> (shishani) -> NULL'
     assert actual==expected
 
+def test_multiple():
+    
+    l=LinkedList()
+    l.append(2)
+    l.append(8)
+    actual=l.__str__()
+    expected='2-> 8-> NULL'
+    assert actual==expected
