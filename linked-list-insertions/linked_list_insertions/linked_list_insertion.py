@@ -1,74 +1,77 @@
 class Node:
-    def __init__(self, value):
-        self.value = value
+    def __init__(self, data):
+        self.data = data
         self.next = None
-
+ 
+ 
 
 class LinkedList:
-    inestance=[]
+ 
+  
     def __init__(self):
         self.head = None
-    def insert(self, value):
-        node = Node(value)
-        if self.head == None:
-            self.head = node
-            return self.head.value
-        else:
-            current = self.head
-            self.head = node
-            self.head.next = current
-            return self.head.value
 
-    def __str__(self):
-        if self.head == None:
-            return 'NULL'
-        else :
-            values=''
-            temporary_value=self.head
-            while temporary_value:
-                values+=f'{temporary_value.value}'  + '-> '
-                temporary_value=temporary_value.next
-            values=values +'NULL'
-            return f'{values}'
-
-
-
-    def append(self,value):
-        current=self.head
-        if self.head ==None:
-            self.head=Node(value)
-            return self.head.value
-        else:
-            while current.next:
-                current=current.next
-            current.next=Node(value)
-            return current.next
-
-    def printNthFromLast(self, n):
-        temp = self.head 
-        n+=1
-        length = 0
-        while temp:
-            temp = temp.next
-            length += 1
-
-        if n > length: 
-            raise Exception("Location is greater than the length of LinkedList")
-            return
+    def printList(self):
         temp = self.head
-        for i in range(0, length - n):
+         
+        while temp :
+            print(temp.data, end="->")
             temp = temp.next
-        return temp.value
+ 
 
+    def append(self, new_data):
+        new_node = Node(new_data)
+         
+        if self.head is None:
+            self.head = new_node
+            return
+        last = self.head
+         
+        while last.next:
+            last = last.next
+        last.next = new_node
+ 
+ 
 
-l = LinkedList()
-l.append(1)
-l.append(3)
-l.append(8)
-l.append(2)
-l.printNthFromLast(0)
-### 3 cases work 0 , 2 , grater the length (6)
+def zipLists(head1, head2):
+ 
+    temp = None
+ 
+    if head1 is None:
+        return head2
+ 
+    if head2 is None:
+        return head1
+ 
+    if head1.data <= head2.data:
+        temp = head1
+        temp.next = zipLists(head1.next, head2)
+         
+    else:
+        temp = head2
+        temp.next = zipLists(head1, head2.next)
 
-print(l.printNthFromLast(0))
-print(l.printNthFromLast(2))
-print(l.printNthFromLast(6))
+    return temp
+ 
+ 
+
+if __name__ == '__main__':
+ 
+   
+    list1 = LinkedList()
+    list1.append(1)
+    list1.append(3)
+    list1.append(2)
+
+ 
+  
+    list2 = LinkedList()
+    list2.append(5)
+    list2.append(9)
+    list2.append(4)
+ 
+    list3 = LinkedList()
+ 
+    list3.head = zipLists(list1.head, list2.head)
+ 
+    list3.printList()
