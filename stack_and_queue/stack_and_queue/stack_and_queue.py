@@ -51,6 +51,7 @@ class Queue():
     def __init__(self):
         self.front=None
         self.rear=None
+    
 
     def enqueue(self , data):
         node=Node(data)
@@ -60,7 +61,7 @@ class Queue():
         else:
             self.rear.next=node    
             self.rear=node
-
+     
 
     def dequeue(self):
         if self.is_empty():
@@ -81,19 +82,21 @@ class Queue():
         return not self.front or not self.rear
 
 
+class PseudoQueue:
+    def __init__(self):
+        self.front = Stack()
+        self.rear =Stack()
+        
 
-if __name__=="__main__" :
-    # s = Stack()
-    # s.push(10)
-    # s.push(20)
-    # print(s.peek())
-    # print(s.is_empty())
-    
-    q =Queue()
-    q.enqueue(10)
-    q.enqueue(20)
-    q.enqueue(30)
-    # print(q.peek())
-    
+    def enqueue(self, data):
+        self.front.push(data)
+        return f"{data}"
 
-    print(q.is_empty())
+        
+    def enqueue(self):
+        pass
+
+# if __name__ == "__main__":
+   
+
+
