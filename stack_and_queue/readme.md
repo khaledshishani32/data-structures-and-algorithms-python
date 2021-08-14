@@ -17,8 +17,3 @@
 ### peek return the value on the front of queue
 
 ---
-
-## implementing  queue by using Stack 
-
-## whiteboard 
-![code](photos/stack_and_queue.jpg)
