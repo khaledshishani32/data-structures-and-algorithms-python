@@ -4,8 +4,6 @@ class Node:
         self.next = None
 
 
-
-
 class Stack:
     def __init__(self):
         self.top = None
@@ -44,10 +42,12 @@ class PseudoQueue :
         self.second_s=Stack()
         self.rear=None
         self.front=None
+        self.size=0
 
     def enqueue(self , data):
         self.first_s.push(data)
         self.rear=self.first_s.top.data
+        self.size+=1
    
 
     def dequeue(self):
@@ -55,6 +55,7 @@ class PseudoQueue :
             temp = self.first_s
             while not temp.is_empty():
                 self.secand_stack.push(temp.pop())
+                self.size-=1
 
             poped = self.secand_stack.pop()
             self.front = self.secand_stack.top
@@ -62,7 +63,11 @@ class PseudoQueue :
             temp2 = self.secand_stack
             while not temp2.is_empty():
                 self.first_s.push(temp2.pop())
+                self.size-=1
             return poped
+
+    def is_empty(self):
+        return self.size == 0
 
     def desplay(self):
         queue_str=''
@@ -71,7 +76,9 @@ class PseudoQueue :
             queue_str+= '(' +str(temp.data)+ ')'+ '-->'
             temp=temp.next
         print(queue_str + "None")
- 
+    
+    def peek(self):
+        return self.rear
 
 if __name__== "__main__" :
     queue= PseudoQueue()
@@ -80,4 +87,5 @@ if __name__== "__main__" :
     queue.enqueue(20)
 
     queue.enqueue(50)
+    print(queue.peek())
     queue.desplay()
