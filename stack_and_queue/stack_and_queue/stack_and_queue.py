@@ -82,19 +82,7 @@ class Queue():
         return not self.front or not self.rear
 
 
-class PseudoQueue:
-    def __init__(self):
-        self.front = Stack()
-        self.rear =Stack()
-        
 
-    def enqueue(self, data):
-        self.front.push(data)
-        return f"{data}"
-
-        
-    def enqueue(self):
-        pass
 
 # if __name__ == "__main__":
    
