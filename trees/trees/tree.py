@@ -64,6 +64,20 @@ class Binary_s_tree:
             elements+=self.right.inorder()
         return elements
 
+    def fizz_buzz(self):
+        my_list = self.inorder()
+        restult = []
+        for i in my_list:
+            if i % 3 == 0 and i % 5 == 0:
+                restult.append("FizzBuzz")
+            elif i % 3 == 0 :
+                restult.append("Fizz")
+            elif i % 5 == 0 :
+                restult.append("Buzz")
+            else:
+                restult.append(i)            
+        return restult 
+
 
     def postorder(self):
         if self is not None:
@@ -89,18 +103,20 @@ class Binary_s_tree:
 
 if __name__ == '__main__':
 
-    tree = Binary_s_tree(10)
+    tree = Binary_s_tree(8)
+    tree.insert(10)
+
+    tree.insert(3)
+    tree.insert(1)
+    tree.insert(6)
+    tree.insert(4)
+    tree.insert(7)
+    tree.insert(14)
+    tree.insert(13)
     tree.insert(15)
 
-    tree.insert(20)
-    tree.insert(13)
-    tree.insert(7)
-    tree.insert(4)
-    tree.insert(9)
-    tree.insert(80)
-    tree.insert(200)
-    print(tree.max_tree_value())
-
+    print(tree.inorder())
+    print(tree.fizz_buzz())
 # # print(tree.right.left.data)
 # # # print(tree.right.right.data)
 
