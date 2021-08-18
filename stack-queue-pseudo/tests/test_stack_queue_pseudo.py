@@ -29,3 +29,14 @@ def test_is_last_in_first_out():
     acual = queue.peek()
     expected = 50
     assert acual == expected
+
+
+def test_after_dequeue():
+
+    queue = PseudoQueue()
+    queue.enqueue(10)
+    queue.enqueue(15)
+
+    acual = queue.peek_rear()
+    expected = 15
+    assert acual == expected    
