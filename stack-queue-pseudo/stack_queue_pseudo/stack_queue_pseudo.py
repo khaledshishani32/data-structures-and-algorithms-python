@@ -36,56 +36,44 @@ class Stack:
             raise Exception("The satck empty cannot peek !")
         return self.top.data
  
-class PseudoQueue :
+class PseudoQueue:
     def __init__(self):
-        self.first_s=Stack()
-        self.second_s=Stack()
-        self.rear=None
-        self.front=None
-        self.size=0
+        self.first_stack = Stack()
+        self.secand_stack = Stack()
+        self.rear = None
+        self.front = None
+       
 
-    def enqueue(self , data):
-        self.first_s.push(data)
-        self.rear=self.first_s.top.data
-        self.size+=1
-   
+    def enqueue(self, data):
+        self.first_stack.push(data)
+        self.rear = self.first_stack.top.data
+       
 
     def dequeue(self):
-        if self.first_s.top :
-            temp = self.first_s
-            while not temp.is_empty():
-                self.secand_stack.push(temp.pop())
-                self.size-=1
+        if self.first_stack.top:
+            stack1 = self.first_stack
+            while not stack1.is_empty():
+                self.secand_stack.push(stack1.pop())
+               
 
             poped = self.secand_stack.pop()
             self.front = self.secand_stack.top
-            self.first_s = Stack()
-            temp2 = self.secand_stack
-            while not temp2.is_empty():
-                self.first_s.push(temp2.pop())
-                self.size-=1
+            self.first_stack = Stack()
+            stack2 = self.secand_stack
+            while not stack2.is_empty():
+                self.first_stack.push(stack2.pop())
+                
             return poped
 
-    def is_empty(self):
-        return self.size == 0
-
-    def desplay(self):
-        queue_str=''
-        temp = self.first_s.top
-        while temp:
-            queue_str+= '(' +str(temp.data)+ ')'+ '-->'
-            temp=temp.next
-        print(queue_str + "None")
-    
-    def peek(self):
+    def peek_rear(self):
         return self.rear
 
 if __name__== "__main__" :
     queue= PseudoQueue()
     queue.enqueue(10)
     queue.enqueue(15)
-    queue.enqueue(20)
-
-    queue.enqueue(50)
-    print(queue.peek())
-    queue.desplay()
+    
+    print(queue.peek_rear())
+   
+   
+    

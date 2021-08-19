@@ -63,6 +63,16 @@ class Binary_s_tree:
         if self.right:
             elements+=self.right.inorder()
         return elements
+    
+    def sum_odd_values(self):
+        my_list=self.inorder()
+        sum_of_values=0
+        result = list(filter(lambda x: (x % 2 != 0), my_list))
+        print(result)
+        for i in result:
+            sum_of_values+=i
+        return sum_of_values    
+
 
     def fizz_buzz(self):
         my_list = self.inorder()
@@ -77,6 +87,10 @@ class Binary_s_tree:
             else:
                 restult.append(i)            
         return restult 
+    
+    def max_tree_value(self):
+       my_list =self.inorder()
+       return my_list[len(my_list)-1]
 
 
     def postorder(self):
@@ -114,9 +128,9 @@ if __name__ == '__main__':
     tree.insert(14)
     tree.insert(13)
     tree.insert(15)
-
-    print(tree.inorder())
-    print(tree.fizz_buzz())
+    print(tree.sum_odd_values())
+    # print(tree.inorder())
+    # print(tree.fizz_buzz())
 # # print(tree.right.left.data)
 # # # print(tree.right.right.data)
 

@@ -8,8 +8,8 @@ def test_version():
 
 def test_expected_outcome():
     q=AnimalShelter()
-    actual=q.enqueue('jack','dog')
-    expected='jack'
+    actual=q.enqueue('lily','dog')
+    expected='lily'
     assert expected==actual
 
 
@@ -21,6 +21,27 @@ def test_edge_cases():
 
 def test_expected_failure():
     q=AnimalShelter()
-    actual=q.enqueue('katty','snake')
+    actual=q.enqueue('momo','camel')
     expected= None
+    assert expected==actual
+
+def test_expected_outcome_dequeue():
+    q=AnimalShelter()
+    actual=q.enqueue('momo','cat')
+    actual=q.dequeue('cat')
+    expected='momo'
+    assert expected==actual
+
+def test_edge_case_dequeue():
+    q=AnimalShelter()
+    actual=q.dequeue('cat')
+    expected=None
+    assert actual==expected
+
+def test_expected_failure_dequeue():
+    q=AnimalShelter()
+    actual=q.enqueue('momo','cat')
+    actual=q.enqueue('momo','dog')
+    actual=q.dequeue('fish')
+    expected=None
     assert expected==actual

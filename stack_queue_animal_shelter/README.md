@@ -4,4 +4,4 @@
 #### use the method enqueue and dequeue to add the animals and return either dogs or cats.
 
 
-![code](photos/animal_queue.jpg)
+![code](animal_queue.jpg)
