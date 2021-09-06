@@ -52,6 +52,15 @@ class HashTable:
       value+= ord(character)
     idx = value * 7 % self.size
     return idx
+  
+  def find_value(self, value_stirng):
+    value_stirng =value_stirng.split('')
+    for i in value_stirng:
+      j = 1 
+      self.add(j , i )
+      j+=1
+
+    
 
 
 
@@ -60,10 +69,13 @@ if __name__ == "__main__":
 
   hash.add('1','khaled')
   hash.add('2', 'waleed')
-
-  hash.add('3', 'al shishani')
+  for i in range(1,3):
+    i =  str(i)
+    print(hash.get(i))
+  # print(hash.get(1))
+  # hash.add('3', 'Once upon a time, there was a brave princess who...')
   
-  print(hash.get('3'))
+  # print(hash.find_value('Once upon a time, there was a brave princess who...'))
 
-  print(hash.contains('22'))
-  print(hash.contains('30'))
+  # print(hash.contains('22'))
+  # print(hash.contains('30'))

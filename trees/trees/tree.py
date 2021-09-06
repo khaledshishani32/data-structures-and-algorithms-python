@@ -128,7 +128,7 @@ if __name__ == '__main__':
     tree.insert(14)
     tree.insert(13)
     tree.insert(15)
-    print(tree.sum_odd_values())
+    print(tree.preorder())
     # print(tree.inorder())
     # print(tree.fizz_buzz())
 # # print(tree.right.left.data)
