@@ -12,7 +12,7 @@ def test_add_node():
     a = graph.add_node('a')
     actual = graph.size()
     excepted = 1
-    assert actual == 1
+    assert actual == excepted
 
 
 def test_print_graph():
