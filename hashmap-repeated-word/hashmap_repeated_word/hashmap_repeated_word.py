@@ -77,27 +77,34 @@ class HashTable:
     return idx
   
 
-  # i tarying to find the first duplicate by using add method but i cannot know how to solev the problem 
-  # i think need to using also the contanis 
+  
+def repeated_word(input_string):
 
-  def find_value(self, value_stirng):
-    value_stirng =value_stirng.split('')
-    for i in value_stirng:
-      j = 1 
-      self.add(j , i )
-      j+=1
+    if not input_string:
+        return "The input_string is empty"
+
+    input_string = input_string.replace(".", "")
+    input_string = input_string.replace(",", "")
+    input_string = input_string.lower()
+
+    words = input_string.split()
+
+    hash_obj = HashTable()
+
+    for word in words:
+
+        if hash_obj.contains(word):
+            return word
+
+        else:
+            hash_obj.add(word, word)
+
+    return "No repeated word ! "
 
     
 
 
 
 if __name__ == "__main__":
-  hash=HashTable()
-
-  hash.add('1','khaled')
-  hash.add('2', 'waleed')
-  for i in range(1,3):
-    i =  str(i)
-    print(hash.get(i))
-  # print(hash.get(1))
-  # hash.add('3', 'Once upon a time, there was a brave princess who...')
+  
+  print(repeated_word('Once upon a time, there was a brave princess who...'))

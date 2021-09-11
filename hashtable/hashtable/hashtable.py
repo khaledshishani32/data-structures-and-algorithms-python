@@ -59,7 +59,8 @@ class HashTable:
       j = 1 
       self.add(j , i )
       j+=1
-
+  
+  
     
 
 
