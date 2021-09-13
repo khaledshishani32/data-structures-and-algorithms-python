@@ -106,37 +106,57 @@ class Graph:
         
         return [vertex.value for vertex in all_nodes]
 
+def business_trip(graph,cities_names):
+    
+    total_cost = 0
+    is_have_path= True
+    for index in range(len(cities_names)-1):
+        for city_name in graph.get_neighbors(cities_names[index]):
+            if cities_names[index+1]==city_name[0]:
+                total_cost+=city_name[1]
+                break
+            else:
+                is_have_path=False
+        
+    if is_have_path==False:
+            total_cost=0
+    
+    return is_have_path, f'${total_cost}'   
+
    
 
 
 if __name__ == '__main__':
 
-    graph2 = Graph()
+    graph = Graph()
 
-    pandora= graph2.add_node('pandora')
-    arendelle= graph2.add_node('arendelle')
-    metroville= graph2.add_node('metroville')
-    narina= graph2.add_node('narina')
-    naboo= graph2.add_node('naboo')
-    manstropolis= graph2.add_node('manstropolis')
+    pandora= graph.add_node('pandora')
+    arendelle= graph.add_node('arendelle')
+    metroville= graph.add_node('metroville')
+    narina= graph.add_node('narina')
+    naboo= graph.add_node('naboo')
+    manstropolis= graph.add_node('manstropolis')
 
-    graph2.add_edge(pandora,arendelle)
-    graph2.add_edge(arendelle,pandora)
-    graph2.add_edge(arendelle,metroville)
-    graph2.add_edge(arendelle,metroville)
-    graph2.add_edge(metroville,arendelle)
-    graph2.add_edge(metroville,manstropolis)
-    graph2.add_edge(metroville,naboo)
-    graph2.add_edge(metroville,narina)
-    graph2.add_edge(narina,metroville)
-    graph2.add_edge(narina,naboo)
-    graph2.add_edge(naboo,narina)
-    graph2.add_edge(naboo,metroville)
-    graph2.add_edge(naboo,manstropolis)
-    graph2.add_edge(manstropolis,naboo)
-    graph2.add_edge(manstropolis,arendelle)
-    graph2.add_edge(manstropolis,metroville)
+    
+    graph.add_edge(pandora,arendelle,150)
+    graph.add_edge(pandora,metroville,82)
+    graph.add_edge(arendelle,pandora,150)
+    graph.add_edge(metroville,pandora,82)
+    graph.add_edge(metroville,arendelle,99)
+    graph.add_edge(metroville,manstropolis,105)
+    graph.add_edge(arendelle,metroville,99)
+    graph.add_edge(arendelle,manstropolis,42)
+    graph.add_edge(metroville,naboo,26)
+    graph.add_edge(metroville,narina,37)
+    graph.add_edge(narina,metroville,37)
+    graph.add_edge(manstropolis,naboo,73)
+    graph.add_edge(manstropolis,arendelle,42)
+    graph.add_edge(manstropolis,metroville,105)
+    graph.add_edge(narina,naboo,250)
+    graph.add_edge(naboo,narina,250)
+    graph.add_edge(naboo,metroville,26)
+    graph.add_edge(naboo,manstropolis,73)
 
-    # print(graph2.bfs(pandora))
-
-    # print(graph2.get_neighbors(pandora))
+    print(business_trip(graph,[metroville,pandora]))
+    print(business_trip(graph,[naboo, pandora]))
+    # print(graph.get_neighbors(pandora))
