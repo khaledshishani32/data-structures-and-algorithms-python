@@ -64,6 +64,14 @@ class HashTable:
                 else:
                     return False
 
+    def __dict__(self):
+        dict_bucket={}
+        for key in self.bucket:
+            if key != None:
+                dict_bucket[key.head.value[0]]=key.head.value[1]
+        return dict_bucket
+
+
     def hash(self, key):
         value = 0
         for character in key:
@@ -72,18 +80,17 @@ class HashTable:
         return idx
 
 
+
 def hashmap_left_join(hash_one,hash_two):
-    result=[]
-    if hash_one.bucket is  hash_one.size*[None] or hash_two.bucket is hash_two.size*[None] :
-        return None
-    for val in hash_one.bucket:
-        if val:
-            temp=[]
-            temp.append(val.head.value[0])
-            temp.append(hash_one.get(val.head.value[0]))
-            temp.append(hash_two.get(val.head.value[0]))
-            result.append(temp)
-    return result
+  final_restul=[]
+  keys=hash_one.__dict__().keys()
+  for key in keys :
+    if hash_two.contains(key):
+      final_restul.append([key,hash_one.get(key),hash_two.get(key)])
+    else:
+      final_restul.append([key,hash_one.get(key),'NULL'])
+  return final_restul
+
 
 if __name__ == "__main__":
     hash_one = HashTable()
